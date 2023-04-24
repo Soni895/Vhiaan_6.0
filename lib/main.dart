@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'auth.dart';
 import 'home.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -22,19 +22,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => LoginManager(),)
-],
-        child:MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home:  auth(),
-
+        ChangeNotifierProvider(
+          create: (context) => LoginManager(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
         ),
-    
+        // home: Navigation(),
+        home: authantication(),
+      ),
     );
   }
 }
-
-
