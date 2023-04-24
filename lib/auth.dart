@@ -15,7 +15,7 @@ class auth extends StatelessWidget {
           width: 200,
           child: ElevatedButton(
               onPressed: () async {
-                await signInWithGoogle();
+                // await signInWithGoogle();
 
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => Navigation()));
