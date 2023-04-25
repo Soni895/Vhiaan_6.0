@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:login_backend/widget/departmet_list_tab.dart';
 import 'package:login_backend/widget/recources_list_tab.dart';
 
+import '../resources_call.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -32,12 +34,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         child: Column(
           children: [
             Image.asset('assets/hospital.png'),
-            SizedBox(height: size.height*.015,),
+            SizedBox(
+              height: size.height * .015,
+            ),
             Text(
-                'Timings:- From 9:00A.M -5:00 P.M\nEmergency Timings- Open 24 Hours\nContact:- 88888xxx88\nDirections ',
-              style: TextStyle(
-                fontSize: 22
-              ),
+              'Timings:- From 9:00A.M -5:00 P.M\nEmergency Timings- Open 24 Hours\nContact:- 88888xxx88\nDirections ',
+              style: TextStyle(fontSize: 22),
             ),
             TabBar(
               isScrollable: true,
@@ -58,10 +60,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               //color: Colors.amber,
               width: size.width,
               height: size.height,
-              child: TabBarView(controller: _tabController,
-                  children: [
-                    DepartmentListTab(),
-                    ResourceListTab()
+              child: TabBarView(controller: _tabController, children:[
+                DepartmentListTab(),
+                communitypage(),
               ]),
             ),
           ],

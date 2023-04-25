@@ -7,6 +7,7 @@ import 'package:login_backend/Screens/register_screen.dart';
 import 'package:login_backend/navigation.dart';
 import 'package:login_backend/provider/login_manager.dart';
 import 'package:provider/provider.dart';
+import 'Screens/card.dart';
 import 'auth.dart';
 import 'home.dart';
 
