@@ -27,12 +27,14 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        // home: Navigation(),
-        home: authantication(),
+        // home: HomeScreen(),
+        home: Navigation(),
+        // home: authantication(),
       ),
     );
   }
