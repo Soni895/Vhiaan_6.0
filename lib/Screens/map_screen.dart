@@ -33,6 +33,11 @@ class _MapScreenState extends State<MapSample> {
   static const LatLng dest = LatLng(30.167319, 77.311288);
   // BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
 
+  // static final CameraPosition _kGooglePlex = CameraPosition(
+  //   target: LatLng(_currentPosition.latitude, _currentPosition.longitude),
+  //   zoom: 14.4746,
+  // );
+
   _getCurrentLocation() async {
     bool serviceenabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceenabled) {
@@ -67,31 +72,11 @@ class _MapScreenState extends State<MapSample> {
     }
   }
 
-  // _getAddress() async {
-  //   try {
-  //     List<Placemark> p = await placemarkFromCoordinates(
-  //         _currentPosition.latitude, _currentPosition.longitude);
-
-  //     Placemark place = p[0];
-
-  //     setState(() {
-  //       _currentAddress =
-  //           "${place.name}, ${place.locality}, ${place.postalCode}, ${place.country}";
-  //       startAddressController.text = _currentAddress;
-  //       _startAddress = _currentAddress;
-  //     });
-  //   } catch (e) {
-  //     if (kDebugMode) {
-  //       print(e);
-  //     }
-  //   }
-  // }
-
   Future<dynamic> addCurrentLocationMark() async {
     setState(() {
       markers.add(
         Marker(
-            infoWindow: const InfoWindow(title: "MMDU hospital"),
+            infoWindow: const InfoWindow(title: "MMDU Hospital"),
             markerId: const MarkerId('startPosition'),
             position:
                 LatLng(_currentPosition.latitude, _currentPosition.longitude),
@@ -100,98 +85,20 @@ class _MapScreenState extends State<MapSample> {
                   MaterialPageRoute(builder: (context) => HomeScreen()));
             },
             icon: BitmapDescriptor.defaultMarker),
-            
       );
-      
+      markers.add(
+        Marker(
+            infoWindow: const InfoWindow(title: "MMDU Hospital"),
+            markerId: const MarkerId('2'),
+            position: LatLng(30.253069, 77.049752),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+            icon: BitmapDescriptor.defaultMarker),
+      );
     });
   }
-
-  // Future getallVendors() async {
-  //   QuerySnapshot querySnapshot =
-  //       await FirebaseFirestore.instance.collection('Vendors').get();
-
-  //   for (int i = 0; i < querySnapshot.docs.length; i++) {
-  //     markers.add(
-  //       Marker(
-  //           markerId: MarkerId(querySnapshot.docs[i]['company']),
-  //           position: LatLng(querySnapshot.docs[i]['location'].latitude,
-  //               querySnapshot.docs[i]['location'].longitude),
-  //           onTap: () {
-  //             showModalBottomSheet(
-  //               context: context,
-  //               builder: (context) {
-  //                 return Column(
-  //                   children: [
-  //                     const SizedBox(height: 10),
-  //                     ListTile(
-  //                       onTap: () async {
-  //                         // _makingPhoneCall(querySnapshot.docs[i]['contactno']);
-  //                       },
-  //                       leading: Icon(
-  //                         Icons.call,
-  //                       ),
-  //                       title: Text("Contact"),
-  //                     ),
-  //                     SizedBox(
-  //                       height: 10,
-  //                     ),
-  //                     Padding(
-  //                       padding: const EdgeInsets.only(left: 16.0),
-  //                       child: TextField(
-  //                         keyboardType: TextInputType.none,
-  //                         controller: _date,
-  //                         decoration: const InputDecoration(
-  //                           icon: Icon(Icons.calendar_today_rounded),
-  //                           labelText: "Select Date",
-  //                         ),
-  //                         onTap: () async {
-  //                           DateTime? pickDate = await showDatePicker(
-  //                               context: context,
-  //                               initialDate: DateTime.now(),
-  //                               firstDate: DateTime(2000),
-  //                               lastDate: DateTime(2101));
-
-  //                           if (pickDate != null) {
-  //                             setState(() {
-  //                               // _date.text =
-  //                               //     DateFormat('dd-MM-yyyy').format(pickDate);
-  //                             });
-  //                           }
-  //                         },
-  //                       ),
-  //                     ),
-  //                     SizedBox(
-  //                       height: 10,
-  //                     ),
-  //                     ElevatedButton(
-  //                         onPressed: () {
-  //                           showModalBottomSheet(
-  //                             context: context,
-  //                             builder: (context) {
-  //                               return Wrap(children: [
-  //                                 AlertDialog(
-  //                                   title: Text("Order Done Successfully 🎉"),
-  //                                 ),
-  //                               ]);
-  //                             },
-  //                           );
-  //                         },
-  //                         child: Text("Order Now" +
-  //                             " " +
-  //                             querySnapshot.docs[i]['category'])),
-  //                   ],
-  //                 );
-  //               },
-  //             );
-  //           },
-  //           infoWindow: InfoWindow(
-  //               title: querySnapshot.docs[i]['category'],
-  //               snippet:
-  //                   querySnapshot.docs[i]['rating'] + '🌟' + " " + "Rating"),
-  //           icon: BitmapDescriptor.defaultMarker),
-  //     );
-  //   }
-  // }
 
   @override
   void initState() {
@@ -215,35 +122,20 @@ class _MapScreenState extends State<MapSample> {
         onMapCreated: (GoogleMapController controller) {
           mapController = controller;
         },
-        // Marker(
-        //custom marker
-        //     markerId: MarkerId("src"),
-        //     position: source,
-        //     draggable: true,
-        //     onDragEnd: (value) {
-        //       //value is new position if dragged
-        //     },
-        //     icon: BitmapDescriptor.defaultMarker),
-        // Marker(
-        //     markerId: MarkerId("Dest"),
-        //     position: dest,
-        //     draggable: true,
-        //     onDragEnd: (value) {
-        //       //value is new position if dragged
-        //     },
-        //     icon: BitmapDescriptor.defaultMarker)
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          GoogleMapController controller = await _controller.future;
+          controller.animateCamera(CameraUpdate.newCameraPosition(
+              CameraPosition(
+                  target: LatLng(
+                      _currentPosition.latitude, _currentPosition.longitude),
+                  zoom: 50)));
+          setState(() {});
+        },
+        // label: Text('To the lake!'),
+        child: Icon(Icons.my_location_outlined),
       ),
     );
   }
 }
-
-//Making Phone calls in the text button of contact us button
-// _makingPhoneCall(var url) async {
-//   var url = Uri.parse("tel:9466445533");
-//   if (await canLaunchUrl(url)) {
-//     print("Calling");
-//     await launchUrl(url);
-//   } else {
-//     throw 'Could not launch $url';
-//   }
-// }

@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: HomeScreen(),
-        home: Navigation(),
-        // home: authantication(),
+        // home: Navigation(),
+        home: authantication(),
       ),
     );
   }
