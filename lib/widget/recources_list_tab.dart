@@ -27,8 +27,8 @@ class _communitypageState extends State<communitypage> {
             ),
             Container(
               height: 100,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
+              color: Colors.red[500],
+              child: const Center(child: Text('Blood  Not available')),
             ),
             SizedBox(
               height: 20,
@@ -36,7 +36,15 @@ class _communitypageState extends State<communitypage> {
             Container(
               height: 100,
               color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
+              child: const Center(child: Text('Beds Available')),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 100,
+              color: Colors.amber[100],
+              child: const Center(child: Text('Snake venoum Available')),
             ),
             SizedBox(
               height: 20,
