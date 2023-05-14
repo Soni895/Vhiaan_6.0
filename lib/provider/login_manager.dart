@@ -55,8 +55,7 @@ class LoginManager extends ChangeNotifier {
       'dob': 'dobtextfield',
       'bloodgroup': 'bloodtextfield',
     });
-
-
+  }
 
   @override
   void notifyListeners() {
