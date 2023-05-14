@@ -62,7 +62,7 @@ class LoginManager extends ChangeNotifier {
 //         .doc(userid) // from credential after login
 //         .get()
 //         .then((doc) => doc.data()!);
-  }
+  // }
 
   @override
   void notifyListeners() {
