@@ -56,13 +56,7 @@ class LoginManager extends ChangeNotifier {
       'bloodgroup': 'bloodtextfield',
     });
 
-// Login Data Fetch
-//     final userData = await FirebaseFirestore.instance
-//         .collection('user')
-//         .doc(userid) // from credential after login
-//         .get()
-//         .then((doc) => doc.data()!);
-  // }
+
 
   @override
   void notifyListeners() {
