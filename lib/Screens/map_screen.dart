@@ -123,19 +123,7 @@ class _MapScreenState extends State<MapSample> {
           mapController = controller;
         },
       ),
-      //   floatingActionButton: FloatingActionButton(
-      //     onPressed: () async {
-      //       GoogleMapController controller = await _controller.future;
-      //       controller.animateCamera(CameraUpdate.newCameraPosition(
-      //           CameraPosition(
-      //               target: LatLng(
-      //                   _currentPosition.latitude, _currentPosition.longitude),
-      //               zoom: 50)));
-      //       setState(() {});
-      //     },
-      //     // label: Text('To the lake!'),
-      //     child: Icon(Icons.my_location_outlined),
-      //   ),
+     
     );
   }
 }
