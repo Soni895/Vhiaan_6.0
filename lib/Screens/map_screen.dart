@@ -105,7 +105,7 @@ class _MapScreenState extends State<MapSample> {
     super.initState();
     _getCurrentLocation();
     _getCurrentLocation();
-    
+    // getallVendors();
   }
 
   @override
@@ -123,7 +123,6 @@ class _MapScreenState extends State<MapSample> {
           mapController = controller;
         },
       ),
-     
     );
   }
 }
