@@ -100,13 +100,13 @@ class _MapScreenState extends State<MapSample> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _getCurrentLocation();
-    _getCurrentLocation();
-    // getallVendors();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _getCurrentLocation();
+  //   _getCurrentLocation();
+  //   // getallVendors();
+  // }
 
   @override
   Widget build(BuildContext context) {
